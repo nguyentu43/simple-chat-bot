@@ -13,7 +13,7 @@ gunicorn==19.8.0
 html5lib==0.9999999
 idna==2.6
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 languageflow==1.1.7a3
 Markdown==2.6.11
 MarkupSafe==1.0
