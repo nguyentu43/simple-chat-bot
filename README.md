@@ -1,7 +1,3 @@
 # Simple ChatBot
 
-* Softmax Regression (Model)
-* TensorFlow
-* Flask
-
-[Try it](http://chatbot-659299.herokuapp.com/)
+[Try it](https://blooming-shore-71258.herokuapp.com/)

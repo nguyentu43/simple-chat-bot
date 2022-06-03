@@ -8,9 +8,13 @@ import utilFB
 from pyvi import ViTokenizer, ViPosTagger
 import datetime
 from pymongo import MongoClient
-client = MongoClient('mongo-host', 'port')
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = MongoClient(os.environ.get('MONGO_URL'))
 db = client.chatbot
-db.authenticate('user', 'pass')
 collection = db.users
 
 POS_TAG = ['F', 'L'] #M: số, F: dấu câu, L: định lượng

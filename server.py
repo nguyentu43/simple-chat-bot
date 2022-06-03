@@ -1,9 +1,9 @@
 from chatbot import Chatbot
-import util
-import sys
 import json
-import traceback
-import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 chatbot = Chatbot()
 chatbot.load()
@@ -12,7 +12,7 @@ from flask import Flask, render_template, request, jsonify, session, redirect
 app = Flask(__name__)
 app.secret_key = 'mychatbot'
 
-token = 'your-api-facebook-app'
+token = os.environ.get('FACEBOOK_API')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
