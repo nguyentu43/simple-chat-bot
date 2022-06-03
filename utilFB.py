@@ -10,11 +10,15 @@ import random
 from bs4 import BeautifulSoup
 import feedparser
 import pytz
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 wikipedia.set_lang("vi")
 
 def get_name_by_id(id):
-	token = 'your-api-facebook-app'
+	token = os.environ.get('FACEBOOK_API')
 	r = requests.get('https://graph.facebook.com/v2.6/{0}?access_token={1}'.format(id, token))
 	data = r.json()
 	return data.get('last_name') + ' ' + data.get('first_name')
@@ -26,10 +30,10 @@ def no_accent_vietnamese(s):
     return unicodedata.normalize('NFKD', u"" + s).encode('ASCII', 'ignore').decode('ASCII')
 
 def get_json_weather(city):
-	url_api_weather = "http://api.openweathermap.org/data/2.5/weather?q={city}&appid=your-api&units=metric&lang=vi"
 	city = no_accent_vietnamese(city)
 	city = city.replace(" ", "")
-	url = url_api_weather.replace("{city}", city)
+	app_id = os.environ.get("OPEN_WEATHER_API")
+	url = "http://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}&units=metric&lang=vi".format(city, app_id)
 	r = requests.get(url)
 	return r.json()
 
